@@ -1,10 +1,9 @@
 using MongoDB.Driver;
 
-namespace Cliente.Test.Util
+namespace CustomerApp.Test.Util
 {
     public static class DropDataBase
     {
-
         public static void Drop() => Drop(Config.DatabaseName);
         public static void Drop(string name)
         {

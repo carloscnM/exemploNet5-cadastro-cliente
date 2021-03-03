@@ -1,4 +1,4 @@
-namespace Cliente.APP.Repositories.Settings
+namespace CustomerApp.Repositories.Settings
 {
     public static class MongoSettings 
     {

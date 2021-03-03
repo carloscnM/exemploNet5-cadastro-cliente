@@ -1,5 +1,5 @@
-using Cliente.APP.Repositories;
-using Cliente.APP.Repositories.Settings;
+using CustomerApp.Repositories;
+using CustomerApp.Repositories.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
-namespace Cliente.APP
+namespace CustomerApp
 {
     public class Startup
     {
@@ -25,16 +25,13 @@ namespace Cliente.APP
             MongoSettings.ConnectionString = Configuration.GetValue<string>("MongoSettings:ConnectionString"); 
             MongoSettings.DatabaseName = Configuration.GetValue<string>("MongoSettings:DatabaseName"); 
 
-            services.AddSingleton<ICustomerRepository, CustomerRepository>();
-            services.AddSingleton<IRestrictiveListRepository, RestrictiveListRepository>();
-
             services.AddControllers()
                     .AddNewtonsoftJson(options => options.UseMemberCasing());
 
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cliente.APP", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerApp", Version = "v1" });
             });
         }
 
@@ -45,7 +42,7 @@ namespace Cliente.APP
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cliente.APP v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerApp v1"));
             }
 
             app.UseHttpsRedirection();

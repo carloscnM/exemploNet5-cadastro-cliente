@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using CustomerApp.Models.ModelsValidations;
 
-namespace Cliente.APP.Models
+namespace CustomerApp.Models
 {
     public class CustomerViewModel 
     {
@@ -13,7 +14,7 @@ namespace Cliente.APP.Models
         [Required]
         public string Phone { get; set; }
 
-        [Required]
+        [Required, CPFValid]
         public string CPF { get; set; }
     }
 }

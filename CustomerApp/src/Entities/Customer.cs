@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Cliente.APP.Entities
+namespace CustomerApp.Entities
 {
     public class Customer 
     {
@@ -18,7 +18,9 @@ namespace Cliente.APP.Entities
         [BsonRequired]
         public string Phone { get; set; }
 
+        private string cpf;
+        
         [BsonRequired]
-        public string CPF { get; set; }
+        public string CPF { get => cpf; set => cpf = Utils.CPF.OnlyNumber(value); }
     }
 }

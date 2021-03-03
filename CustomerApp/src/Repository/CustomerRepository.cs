@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Cliente.APP.Entities;
-using Cliente.APP.Repositories.Settings;
+using CustomerApp.Entities;
+using CustomerApp.Repositories.Settings;
 using MongoDB.Driver;
 
-namespace Cliente.APP.Repositories
+namespace CustomerApp.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
@@ -29,14 +29,14 @@ namespace Cliente.APP.Repositories
             return customer;
         }
 
-        public void Update(string id, Customer customerIn) =>
-            _customer.ReplaceOne(customer => customer.Id == id, customerIn);
+        public void Update(Customer customerIn) =>
+            _customer.ReplaceOne(customer => customer.Id == customerIn.Id, customerIn);
 
-        public void Remove(Customer customerIn) =>
-            _customer.DeleteOne(customer => customer.Id == customerIn.Id);
+        public void Remove(Customer customer) =>
+            _customer.DeleteOne(customer => customer.Id == customer.Id);
 
-        public void Remove(string id) => 
-            _customer.DeleteOne(customer => customer.Id == id);
+        public void Remove(string cpf) => 
+            _customer.DeleteOne(customer => customer.CPF == cpf);
 
         public Customer GetByCpf(string cpf) =>
             _customer.Find<Customer>(customer => customer.CPF == cpf).FirstOrDefault();

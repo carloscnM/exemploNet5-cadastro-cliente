@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Cliente.APP.Entities;
+using CustomerApp.Entities;
 
-namespace Cliente.APP.Repositories
+namespace CustomerApp.Repositories
 {
     public interface ICustomerRepository
     {
@@ -9,8 +9,8 @@ namespace Cliente.APP.Repositories
         Customer Get(string id);
         Customer GetByCpf(string cpf);
         Customer Store(Customer customer);
-        void Update(string id, Customer customerIn);
-        void Remove(Customer customerIn);
+        void Update(Customer customer);
+        void Remove(Customer customer);
         void Remove(string id);  
     }
 }
